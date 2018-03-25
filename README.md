@@ -1,6 +1,6 @@
 ﻿# Test Guru.
 
-###TestGuru application entities:
+##TestGuru application entities:
 * Admins
 * Users
 * Tests
