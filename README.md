@@ -1,8 +1,8 @@
-﻿README.
+﻿# Test Guru.
 
-TestGuru application entities:
-Admins
-Users
-Tests
-Questions
-Answers
+###TestGuru application entities:
+* Admins
+* Users
+* Tests
+* Questions
+* Answers
