@@ -6,42 +6,42 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Test.create([
-                { title: 'Ruby on Rails', level: 1 },
-                { title: 'NodeJS', level: 2 },
-                { title: 'Python', level: 3 }
+Test.create!([
+                { title: 'Ruby on Rails', level: 1, author_id: users[0].id },
+                { title: 'NodeJS', level: 2, author_id: users[0].id },
+                { title: 'Python', level: 3, author_id: users[0].id }
             ])
 
-Category.create([
+Category.create!([
                     { title: 'Frontend' },
                     { title: 'Backend' },
                     { title: 'Machine Learning' }
                 ])
 
-Question.create([
-                    { body: 'Зачем нужен Ruby?', test_id: 1 },
-                    { body: 'Зачем нужен NodeJS?', test_id: 2 },
-                    { body: 'Зачем нужен Python?', test_id: 3 }
+Question.create!([
+                    { body: 'Зачем нужен Ruby?', test_id: tests[0].id },
+                    { body: 'Зачем нужен NodeJS?', test_id: tests[1].id },
+                    { body: 'Зачем нужен Python?', test_id: tests[2].id }
                 ])
 
-Answer.create([
-                  { body: 'Правильный ответ', correct: true, test_id: 1 },
-                  { body: 'Неправильный ответ 1', test_id: 1 },
-                  { body: 'Неправильный ответ 2', test_id: 1 },
-                  { body: 'Правильный ответ', correct: true, test_id: 2 },
-                  { body: 'Неправильный ответ 1', test_id: 2 },
-                  { body: 'Неправильный ответ 2', test_id: 2 },
-                  { body: 'Правильный ответ', correct: true, test_id: 3},
-                  { body: 'Неправильный ответ 1', test_id: 3 },
-                  { body: 'Неправильный ответ 2', test_id: 3 }
+Answer.create!([
+                  { body: 'Правильный ответ', correct: true, test_id: tests[0].id },
+                  { body: 'Неправильный ответ 1', test_id: tests[0].id },
+                  { body: 'Неправильный ответ 2', test_id: tests[0].id },
+                  { body: 'Правильный ответ', correct: true, test_id: tests[1].id },
+                  { body: 'Неправильный ответ 1', test_id: tests[1].id },
+                  { body: 'Неправильный ответ 2', test_id: tests[1].id },
+                  { body: 'Правильный ответ', correct: true, test_id: tests[2].id },
+                  { body: 'Неправильный ответ 1', test_id: tests[2].id },
+                  { body: 'Неправильный ответ 2', test_id: tests[2].id }
               ])
 
-User.create([
+User.create!([
                 { first_name: 'Юрий', last_name: 'Петров' }
             ])
 
-UserTest.create([
-                    { user_id: 1, test_id: 1 },
-                    { user_id: 1, test_id: 2 },
-                    { user_id: 1, test_id: 3 }
+TestsUser.create!([
+                    { user_id: users[0].id, test_id: tests[0].id },
+                    { user_id: users[0].id, test_id: tests[1].id },
+                    { user_id: users[0].id, test_id: tests[2].id }
                 ])
