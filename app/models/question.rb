@@ -3,5 +3,4 @@ class Question < ApplicationRecord
   has_many :answers
 
   validates :body, presence: true
-  validates :answers, numericality: { greater_than: 0, less_than: 5 }
 end
