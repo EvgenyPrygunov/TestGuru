@@ -1,8 +1,4 @@
 class Test < ApplicationRecord
-  def self.titles_by_category(category)
-    joins( :category ).where(categories: { title: category }).order(title: :desc).pluck(:title)
-  end
-
   belongs_to :category
   belongs_to :author, class_name: 'User'
   has_many :questions
@@ -15,4 +11,8 @@ class Test < ApplicationRecord
 
   validates :title, presence: true, uniqueness: { scope: :level }
   validates :level, numeralicity: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  def self.titles_by_category(category)
+    joins( :category ).where(categories: { title: category }).order(title: :desc).pluck(:title)
+  end
 end
