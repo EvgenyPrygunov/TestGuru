@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
-  before_action :find_test, only: %i[index create delete]
-  before_action :find_question, only: %i[show]
+  before_action :find_test, only: %i[index create]
+  before_action :find_question, only: %i[show destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -24,9 +24,9 @@ class QuestionsController < ApplicationController
     render plain: "<p>Question: '<%= question.body %>' was created.</p>"
   end
 
-  def delete
-    @test.questions.delete(question_params)
-    render plain: "<p>Question: '<%= question.body %>' was deleted.</p>"
+  def destroy
+    @question.destroy
+    render plain: "<p>Question: '<%= question.body %>' was destroyed.</p>"
   end
 
   private
