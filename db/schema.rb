@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180415111621) do
     t.string "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "test_id"
+    t.integer "test_id", null: false
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180415111621) do
     t.integer "category_id"
     t.integer "author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
-    t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true
+    t.index ["title", "level"], name: "index_tests_on_title_and_level" , unique: true
   end
 
   create_table "tests_users", id: false, force: :cascade do |t|
