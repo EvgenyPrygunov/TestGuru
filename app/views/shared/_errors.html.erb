@@ -1,7 +1,7 @@
 <% if resource.errors.present? %>
   <div>
     <% # pluralize ниже не работает, почему? %>
-    <h2><%= pluralize(resource.errors.count, 'error') %> detected:</h2>
+    <h2><%= t('errors.template.header', count: resource.errors.size, model: resource.class) %></h2>
 
     <ul>
       <% resource.errors.full_messages.each do |message| %>

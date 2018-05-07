@@ -1,10 +1,13 @@
 class TestsController < ApplicationController
+
+  before_action :find_test, only: %i[show edit update destroy]
+
   def index
     @tests = Test.all
   end
 
   def show
-    @test = Test.find(params[:id])
+
   end
 
   def new
@@ -12,10 +15,10 @@ class TestsController < ApplicationController
   end
 
   def edit
-    @test = Test.find(params[:id])
+
   end
 
-  # Создание не работает "Возникли ошибки: Author не может отсутствовать. Как прицепить текущего user как author?"
+  # На данном этапе в модели test к author применил optional: true
   def create
     @test = Test.new(test_params)
 
@@ -27,8 +30,6 @@ class TestsController < ApplicationController
   end
 
   def update
-    @test = Test.find(params[:id])
-
     if @test.update(test_params)
       redirect_to @test
     else
@@ -37,8 +38,6 @@ class TestsController < ApplicationController
   end
 
   def destroy
-    @test = Test.find(params[:id])
-
     @test.destroy
     redirect_to tests_path
   end
@@ -47,6 +46,10 @@ class TestsController < ApplicationController
 
   def test_params
     params.require(:test).permit(:title, :level, :category_id)
+  end
+
+  def find_test
+    @test = Test.find(params[:id])
   end
 
 end
