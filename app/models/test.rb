@@ -1,6 +1,6 @@
 class Test < ApplicationRecord
   belongs_to :category
-  belongs_to :author, class_name: 'User'
+  belongs_to :author, class_name: 'User', optional: true
   has_many :questions
   has_many :tests_users
   has_many :users, through: :tests_users
@@ -11,7 +11,7 @@ class Test < ApplicationRecord
   scope :hard, -> { by_level(5..Float::INFINITY) }
 
   validates :title, presence: true, uniqueness: { scope: :level }
-  validates :level, numeralicity: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :level, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def self.titles_by_category(category)
     joins( :category ).where(categories: { title: category }).order(title: :desc).pluck(:title)
