@@ -1,9 +1,10 @@
 class Test < ApplicationRecord
+
   belongs_to :category
   belongs_to :author, class_name: 'User', optional: true
   has_many :questions
-  has_many :tests_users
-  has_many :users, through: :tests_users
+  has_many :test_passages
+  has_many :users, through: :test_passages
 
   scope :by_level, ->(level) { where(level:level).order(level: :asc) }
   scope :simple, -> { by_level(0..1) }
@@ -16,4 +17,5 @@ class Test < ApplicationRecord
   def self.titles_by_category(category)
     joins( :category ).where(categories: { title: category }).order(title: :desc).pluck(:title)
   end
+
 end
