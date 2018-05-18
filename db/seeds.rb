@@ -23,19 +23,13 @@ tests = Test.create!([
                 { title: 'Javascript', level: 1, author_id: users[0].id, category_id: categories[0].id }
             ])
 
-TestsUser.create!([
-                      { user_id: users[0].id, test_id: tests[0].id },
-                      { user_id: users[0].id, test_id: tests[1].id },
-                      { user_id: users[0].id, test_id: tests[2].id },
-                      { user_id: users[0].id, test_id: tests[3].id }
-                  ])
-
 questions = Question.create!([
-                    { body: 'Зачем нужен Ruby on Rails?', test_id: tests[0].id },
-                    { body: 'Зачем нужен NodeJS?', test_id: tests[1].id },
-                    { body: 'Зачем нужен Python?', test_id: tests[2].id },
-                    { body: 'Зачем нужен Javascript?', test_id: tests[3].id }
-                ])
+                                 { body: 'Зачем нужен Ruby on Rails?', test_id: tests[0].id },
+                                 { body: 'Зачем нужен NodeJS?', test_id: tests[1].id },
+                                 { body: 'Зачем нужен Python?', test_id: tests[2].id },
+                                 { body: 'Зачем нужен Javascript?', test_id: tests[3].id }
+                             ])
+
 
 Answer.create!([
                   { body: 'Правильный ответ', correct: true, question_id: questions[0].id },
@@ -51,3 +45,11 @@ Answer.create!([
                   { body: 'Неправильный ответ 1', question_id: questions[3].id },
                   { body: 'Неправильный ответ 2', question_id: questions[3].id }
               ])
+
+
+TestPassage.create!([
+                        { user_id: users[0].id, test_id: tests[0].id },
+                        { user_id: users[0].id, test_id: tests[1].id },
+                        { user_id: users[0].id, test_id: tests[2].id },
+                        { user_id: users[0].id, test_id: tests[3].id }
+                    ])

@@ -6,8 +6,12 @@
   <strong>Level: <%= @test.level %></strong>
 </p>
 
-<p>Questions:</p>
-<p><%= link_to 'Create new question', new_test_question_path(@test) %></p>
-<p><%= render @test.questions %></p>
+<h2>Questions:</h2>
+
+<p><%= link_to 'New question', new_test_question_path(@test) %></p>
+
+<ol>
+  <%= render @test.questions %>
+</ol>
 
 <%= link_to 'Back', tests_path %>
