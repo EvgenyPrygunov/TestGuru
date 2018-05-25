@@ -1,5 +1,6 @@
 class TestPassagesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_test_passage, only: %i[show update result]
 
   def show
@@ -14,7 +15,7 @@ class TestPassagesController < ApplicationController
     @test_passage.accept!(params[:answers_ids])
 
     if @test_passage.completed?
-      redirect_to result_test_passages_path(@test_passage)
+      redirect_to result_test_passage_path(@test_passage)
     else
       render :show
     end

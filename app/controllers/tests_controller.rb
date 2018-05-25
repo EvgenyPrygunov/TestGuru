@@ -1,7 +1,7 @@
 class TestsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_test, only: %i[show edit update destroy start]
-  before_action :set_user, only: :start
 
   def index
     @tests = Test.all
@@ -19,7 +19,6 @@ class TestsController < ApplicationController
 
   end
 
-  # На данном этапе в модели test к author применил optional: true
   def create
     @test = Test.new(test_params)
 
@@ -43,10 +42,10 @@ class TestsController < ApplicationController
     redirect_to tests_path
   end
 
-  # Не работает старт. Пишет "SQLite3::SQLException: no such table: main.current_questions:  INSERT INTO "test_passages" ("user_id", "test_id", "current_question_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)"
   def start
-    @user.tests.push(@test)
-    redirect_to @user.test_passage(@test)
+    user = current_user
+    user.tests.push(@test)
+    redirect_to user.test_passage(@test)
   end
 
   private
@@ -57,10 +56,6 @@ class TestsController < ApplicationController
 
   def set_test
     @test = Test.find(params[:id])
-  end
-
-  def set_user
-    @user = User.first
   end
 
 end
