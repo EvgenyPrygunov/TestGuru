@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   EMAIL_FORMAT = /\A[^@]+@(\w+\.+[a-zA-Z]{1,})+\z/i
 
-  validates :email, format: EMAIL_FORMAT, uniqueness: true
+  validates :email, format: EMAIL_FORMAT, uniqueness: { scope: :user_id }
 
   has_secure_password
 

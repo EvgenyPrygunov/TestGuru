@@ -7,7 +7,7 @@ module ApplicationHelper
     link_to 'Test Guru', "https://github.com/#{author}/#{repo}", target: :blank
   end
 
-  def flash_message(type)
-    content_tag :p, flash[type], class: 'flash alert' if flash[type]
+  def flash_message(type, message)
+    content_tag :p, message, flash[type], class: type # if flash[type]
   end
 end
