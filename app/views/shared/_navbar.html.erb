@@ -1,6 +1,6 @@
 <div class="nav user">
   <p>Project <%= github_url('EvgenyPrygunov', 'test-guru') %> - for making and taking tests.</p>
-  <% if logged_in? %>
+  <% if signed_in? %>
     <p>Welcome,<b><%= current_user.first_name %> Guru!</b>
       <%= link_to 'Sign out', signout_path, method: :delete %>
     </p>

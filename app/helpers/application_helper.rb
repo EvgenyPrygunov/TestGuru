@@ -8,6 +8,6 @@ module ApplicationHelper
   end
 
   def flash_message(type, message)
-    content_tag :p, message, flash[type], class: type # if flash[type]
+    content_tag :p, message, class: type
   end
 end

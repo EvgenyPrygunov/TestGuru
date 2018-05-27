@@ -1,14 +1,12 @@
-require 'digest/sha1'
-
 class User < ApplicationRecord
 
   has_many :test_passages
   has_many :tests, through: :test_passages
   has_many :author_tests, class_name: 'Test', foreign_key: :author_id
 
-  EMAIL_FORMAT = /\A[^@]+@(\w+\.+[a-zA-Z]{1,})+\z/i
-
-  validates :email, format: EMAIL_FORMAT, uniqueness: { scope: :user_id }
+  validates :email, uniqueness: true
+  validates :email, uniqueness: true
+  validates_format_of :email, :with => /@/
 
   has_secure_password
 
