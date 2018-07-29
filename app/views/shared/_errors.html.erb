@@ -1,6 +1,5 @@
 <% if resource.errors.present? %>
   <div>
-    <% # pluralize ниже не работает, почему? %>
     <h2><%= t('errors.template.header', count: resource.errors.size, model: resource.class) %></h2>
 
     <ul>

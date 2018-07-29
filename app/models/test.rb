@@ -1,10 +1,10 @@
 class Test < ApplicationRecord
 
-  belongs_to :category
-  belongs_to :author, class_name: 'User', optional: true
-  has_many :questions
   has_many :test_passages
   has_many :users, through: :test_passages
+  has_many :questions
+  belongs_to :category, optional: true
+  belongs_to :author, class_name: 'User'
 
   scope :by_level, ->(level) { where(level:level).order(level: :asc) }
   scope :simple, -> { by_level(0..1) }

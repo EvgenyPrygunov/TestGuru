@@ -4,7 +4,11 @@ class User < ApplicationRecord
   has_many :tests, through: :test_passages
   has_many :author_tests, class_name: 'Test', foreign_key: :author_id
 
-  validates :email, presence: true
+  validates :email, uniqueness: true
+  validates :email, uniqueness: true
+  validates_format_of :email, :with => /@/
+
+  has_secure_password
 
   def tests_by_level(level)
     tests.where( level: level )
