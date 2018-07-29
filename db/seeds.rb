@@ -13,7 +13,7 @@ categories = Category.create!([
                  ])
 
 users = User.create!([
-                         { first_name: 'Юрий', last_name: 'Петров', email: 'YuriPetrov@gmail.com' }
+                         { first_name: 'Юрий', last_name: 'Петров', email: 'YuriPetrov@gmail.com', password: 'password' }
                      ])
 
 tests = Test.create!([

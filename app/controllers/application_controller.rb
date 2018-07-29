@@ -1,24 +1,19 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception
 
-  helper_method :current_user,
-                :signed_in?
+  protected
 
-  private
+  def after_sign_in_path_for(resource)
 
-  def authenticate_user!
-    unless signed_in?
-      cookies[:path] = request.fullpath
-      redirect_to signin_path, alert: 'Are you a Guru? Verify your Email and Password please'
+    if current_user.first_name && current_user.second_name
+      flash.notice = "Hello, #{current_user.first_name.capitalize} #{current_user.second_name.capitalize}!"
+    else
+      flash.notice = 'Hello, friend!'
     end
-  end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-  end
+    resource.is_a?(Admin) ? admin_tests_path : root_path
 
-  def signed_in?
-    current_user.present?
   end
 
 end

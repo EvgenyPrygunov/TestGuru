@@ -11,7 +11,8 @@
 <p><%= link_to 'New question', new_test_question_path(@test) %></p>
 
 <ol>
-  <%= render @test.questions %>
+  <%= render partial: 'questions/question', collection: @test.questions %>
 </ol>
 
-<%= link_to 'Back', tests_path %>
+<%= link_to 'Edit', edit_admin_test_path(@test) %>
+<%= link_to 'Back', admin_tests_path %>

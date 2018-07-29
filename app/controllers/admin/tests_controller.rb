@@ -1,6 +1,5 @@
-class TestsController < AuthenticatedController
+class Admin::TestsController < Admin::BaseController
 
-  before_action :authenticate_user!
   before_action :set_test, only: %i[show edit update destroy start]
 
   def index
@@ -10,16 +9,16 @@ class TestsController < AuthenticatedController
   def show; end
 
   def new
-    @test = Test.new
+    @test = current_user.author_tests.build
   end
 
   def edit; end
 
   def create
-    @test = Test.new(test_params)
+    @test = current_user.author_tests.build(test_params)
 
     if @test.save
-      redirect_to @test
+      redirect_to [:admin, @test]
     else
       render :new
     end
@@ -27,7 +26,7 @@ class TestsController < AuthenticatedController
 
   def update
     if @test.update(test_params)
-      redirect_to @test
+      redirect_to [:admin, @test]
     else
       render :edit
     end
@@ -35,7 +34,7 @@ class TestsController < AuthenticatedController
 
   def destroy
     @test.destroy
-    redirect_to tests_path
+    redirect_to admin_tests_path
   end
 
   def start
