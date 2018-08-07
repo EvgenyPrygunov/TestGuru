@@ -3,8 +3,8 @@ class Test < ApplicationRecord
   has_many :test_passages
   has_many :users, through: :test_passages
   has_many :questions
-  belongs_to :category, optional: true
-  belongs_to :author, class_name: 'User'
+  belongs_to :category, optional: true # optional потом удалить
+  belongs_to :author, class_name: 'User', optional: true # optional потом удалить
 
   scope :by_level, ->(level) { where(level:level).order(level: :asc) }
   scope :simple, -> { by_level(0..1) }

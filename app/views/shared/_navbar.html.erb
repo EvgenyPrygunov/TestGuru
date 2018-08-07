@@ -1,13 +1,12 @@
 <div class="nav user">
-  <p>Project <%= github_url('EvgenyPrygunov', 'test-guru') %> - for making and taking tests.</p>
-  <% if signed_in? %>
-    <p>Welcome,<b><%= current_user.first_name %> Guru!</b>
-      <%= link_to 'Sign out', signout_path, method: :delete %>
+  <% if user_signed_in? %>
+    <p>Welcome, <b><%= current_user.email %> Guru!</b>
+      <%= link_to 'Logout', destroy_user_session_path , method: :delete %>
     </p>
   <% else %>
     <p>
-      <%= link_to 'Register', register_path %> |
-      <%= link_to 'Sign in', signin_path %>
+      <%= link_to 'Register', user_registration_path, method: :post %> |
+      <%= link_to 'Login', user_session_path, method: :post %>
     </p>
   <% end %>
 </div>
