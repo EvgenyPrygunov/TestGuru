@@ -225,6 +225,10 @@ en:
       header:
         one: "%{count} error detected"
         other: "%{count} errors detected"
+    navbar:
+        log_in: "Log in"
+        log_out: "Log out"
+        sign_up: "Registration"
   new_test: "New Test"
   back: "Back"
   next: "Next"
