@@ -151,6 +151,15 @@ en:
       create: Create %{model}
       submit: Save %{model}
       update: Update %{model}
+    submit:
+      test:
+        create: "Create Test"
+        update: "Update Test"
+    label:
+      test:
+        title: "Title"
+        level: "Level"
+        category_id: "Category"
   number:
     currency:
       format:
@@ -211,3 +220,65 @@ en:
       long: "%B %d, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  shared:
+    errors:
+      header:
+        one: "%{count} error detected"
+        other: "%{count} errors detected"
+  new_test: "New Test"
+  back: "Back"
+  next: "Next"
+  edit: "Edit"
+  show: "Show"
+  delete: "Delete"
+  sure: "Are you sure?"
+  question: "Question"
+  answer: "Answer"
+  test: "Test"
+  tests:
+    index:
+      header: "Tricky Tests"
+      title: "Title"
+      level: "Level"
+      questions: "Questions"
+      actions: "Actions"
+    test:
+      start: "Start"
+  test_passages:
+    result:
+      header: "The %{title} Test was completed!"
+      result: "Result: %{result}"
+    show:
+      header: "Passing the %{title} Test."
+      question_number: "Question number %{number} of %{sum}"
+  admin:
+    tests:
+      create:
+        success: "Test was successfully created."
+      update:
+        success: "Test was successfully updated."
+      index:
+        header: "Tricky Tests"
+        title: "Title"
+        level: "Level"
+        questions: "Questions"
+        actions: "Actions"
+      show:
+        header: "The %{title} Test"
+        level: "Level: %{level}"
+        actions: "Actions"
+        new_question: "New question"
+    questions:
+      show:
+        answers: "Answers"
+        new_answer: "New answer"
+    answers:
+      edit:
+        edit_answer: "Editing answer"
+      new:
+        new_answer: "New answer"
+      show:
+        correct: "Correct"
+  tests_mailer:
+    completed_test:
+      subject: "You just completed the TestGuru test!"
