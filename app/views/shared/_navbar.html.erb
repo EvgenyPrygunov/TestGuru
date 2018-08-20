@@ -1,12 +1,19 @@
-<div class="nav user">
-  <% if user_signed_in? %>
-    <p>Welcome, <b><%= current_user.email %> Guru!</b>
-      <%= link_to 'Logout', destroy_user_session_path , method: :delete %>
-    </p>
-  <% else %>
-    <p>
-      <%= link_to 'Register', user_registration_path, method: :post %> |
-      <%= link_to 'Login', user_session_path, method: :post %>
-    </p>
-  <% end %>
-</div>
+<nav class="navbar navbar-light bg-light">
+  <%= link_to 'TestGuru', root_path, class: 'navbar-brand' %> |
+
+  <span class="navbar-text">
+    <% if current_user&.admin? %>
+      <%= link_to 'TestGuru Admin Panel', admin_tests_path, class: 'navbar-brand navbar-left btn btn-light' %>
+    <% end %>
+  </span>
+
+  <span class="navbar-text">
+    <% if user_signed_in? %>
+      Welcome, <b><%= current_user.email %> Guru!</b> |
+        <%= link_to t('.log_out'), destroy_user_session_path , method: :delete %>
+    <% else %>
+      <%= link_to t('.sign_up'), user_registration_path, method: :post %>
+      <%= link_to t('.log_in'), user_session_path, method: :post %>
+    <% end %>
+  </span>
+</nav>
