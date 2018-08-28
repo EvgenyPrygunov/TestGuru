@@ -306,12 +306,15 @@ ru:
     test:
       start: "Начать"
   test_passages:
-    result:
-      header: "Тест %{title} успешно завершен!"
-      result: "Результат: %{result}"
     show:
       header: "Проходится %{title} Тест."
       question_number: "Вопрос номер %{number} из %{sum}"
+    result:
+      header: "Тест %{title} успешно завершен!"
+      result: "Результат: %{result}"
+    gist:
+      success: "Gist успешно сохранен."
+      failure: "Во время сохранения gist произошла ошибка."
   admin:
     tests:
       create:
@@ -340,6 +343,12 @@ ru:
         new_answer: "Новый ответ"
       show:
         correct: "Правильный"
+    gists:
+      index:
+        header: 'Список gists'
+        question: 'Вопрос'
+        url: 'Ссылка на gist'
+        user_email: 'Email пользователя'
   tests_mailer:
     completed_test:
       subject: "Вы успешно завершили тест на TestGuru!"
