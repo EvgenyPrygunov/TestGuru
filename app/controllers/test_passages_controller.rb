@@ -20,11 +20,11 @@ class TestPassagesController < AuthenticatedController
   def gist
     result = GistQuestionService.new(@test_passage.current_question).call
 
-    flash_options = if result.html_url
+    flash_options = if result&.html_url.success?
                       create_gist!(result.html_url)
-                      { notice: t('.success', link: result.html_url) }
+                      { notice: t('test_passages.gist.success', link: result.html_url) }
                     else
-                      { alert: t('.failure') }
+                      { alert: t('test_passages.gist.failure') }
                     end
 
     redirect_to @test_passage, flash_options

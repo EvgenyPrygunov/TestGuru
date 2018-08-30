@@ -1,6 +1,6 @@
 class GistQuestionService
 
-  GITHUB_TOKEN = 'fae05c322d1a2e1bc235502542263c0a18e74cf7'# ENV['GITHUB_TOKEN']
+  GITHUB_TOKEN = ENV['GITHUB_TOKEN']
 
   def initialize(question, client: nil)
     @question = question
@@ -16,7 +16,7 @@ class GistQuestionService
 
   def gist_params
     {
-        description: "A question about #{@test.title} from TestGuru",
+        description: t('gist_question_service.description', title: @test.title),
         files: {
             'test-guru-question.txt' => {
                 content: gist_content
