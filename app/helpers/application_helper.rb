@@ -1,4 +1,7 @@
 module ApplicationHelper
+
+  BOOTSTRAP_CSS_CLASSES = { success: 'alert-success', error: 'alert-danger', alert:  'alert-warning', notice:  'alert-info' }
+
   def current_year
     Time.current.year
   end
@@ -12,17 +15,6 @@ module ApplicationHelper
   end
 
   def bootstrap_class_for(flash_type)
-    case flash_type
-      when :success
-        "alert-success" # Green
-      when :error
-        "alert-danger" # Red
-      when :alert
-        "alert-warning" # Yellow
-      when :notice
-        "alert-info" # Blue
-      else
-        flash_type.to_s
-    end
+    BOOTSTRAP_CSS_CLASSES[flash_type]
   end
 end

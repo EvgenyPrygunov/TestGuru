@@ -249,12 +249,15 @@ en:
     test:
       start: "Start"
   test_passages:
-    result:
-      header: "The %{title} Test was completed!"
-      result: "Result: %{result}"
     show:
       header: "Passing the %{title} Test."
       question_number: "Question number %{number} of %{sum}"
+    result:
+      header: "The %{title} Test was completed!"
+      result: "Result: %{result}"
+    gist:
+      success: "Gist was successfully created!"
+      failure: "An error occurred when saving gist."
   admin:
     tests:
       create:
@@ -283,6 +286,14 @@ en:
         new_answer: "New answer"
       show:
         correct: "Correct"
+    gists:
+      index:
+        header: 'Gists list'
+        question: 'Question'
+        url: 'Url gist'
+        user_email: 'User email'
   tests_mailer:
     completed_test:
       subject: "You just completed the TestGuru test!"
+  gist_question_service:
+    description: "A question about %{title} from TestGuru"
